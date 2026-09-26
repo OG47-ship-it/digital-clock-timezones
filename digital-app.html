@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Time App</title>
+  <link rel="stylesheet" href="digital-app.css" />
+</head>
+<body>
+  <div class="time-app">
+    <div class="screen">
+      <div class="display">
+        <div class="time-display" id="timeDisplay">00:00:00</div>
+        <div class="period" id="periodDisplay">AM</div>
+      </div>
+      <div class="date-display" id="dateDisplay">Monday, January 1, 2025</div>
+    </div>
+    
+    <div class="controls">
+      <label class="control-group">
+        <span class="label">Format</span>
+        <select id="formatSelect">
+          <option value="12">12-Hour</option>
+          <option value="24">24-Hour</option>
+        </select>
+      </label>
+      
+      <label class="control-group">
+        <span class="label">Timezone</span>
+        <select id="timezoneSelect"></select>
+      </label>
+      
+      <label class="control-group checkbox">
+        <input type="checkbox" id="showMilliseconds" />
+        <span>Show Milliseconds</span>
+      </label>
+      
+      <label class="control-group checkbox">
+        <input type="checkbox" id="showDate" checked />
+        <span>Show Date</span>
+      </label>
+    </div>
+    
+    <div class="info-panel">
+      <div class="info-item">
+        <span class="label">Unix Timestamp</span>
+        <span class="value" id="timestamp">0</span>
+      </div>
+      <div class="info-item">
+        <span class="label">UTC Offset</span>
+        <span class="value" id="utcOffset">+00:00</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Elapsed Today</span>
+        <span class="value" id="elapsedToday">0h 0m 0s</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="digital-app.js"></script>
+</body>
+</html>
