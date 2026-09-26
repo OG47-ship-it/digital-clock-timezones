@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070b1a" />
+  <title>Neon World Clock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Live time anywhere</p>
+        <h1>Neon World Clock</h1>
+        <p class="subtitle">Track the current time across the planet with digital and analog displays.</p>
+      </div>
+      <div class="live-indicator"><span></span> LIVE</div>
+    </header>
+
+    <section class="toolbar" aria-label="Clock controls">
+      <label class="timezone-picker" for="timezoneSelect">
+        <span>Add a time zone</span>
+        <select id="timezoneSelect">
+          <option value="">Choose a location…</option>
+        </select>
+      </label>
+      <button id="addClockButton" class="add-button" type="button">＋ Add clock</button>
+      <button id="resetButton" class="secondary-button" type="button">Reset</button>
+    </section>
+
+    <section id="clocksGrid" class="clocks-grid" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

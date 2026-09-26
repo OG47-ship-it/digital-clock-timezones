@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+
+:root {
+  color-scheme: dark;
+  --bg: #070b1a;
+  --panel: rgba(15, 22, 49, 0.78);
+  --border: rgba(120, 246, 255, 0.22);
+  --cyan: #78f6ff;
+  --pink: #ff5fcf;
+  --muted: #94a3c7;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% -20%, #25235c 0, var(--bg) 55%);
+  color: #f8fbff;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.ambient { position: fixed; width: 28rem; height: 28rem; border-radius: 50%; filter: blur(100px); opacity: .15; pointer-events: none; }
+.ambient-one { background: var(--cyan); top: -12rem; left: -8rem; }
+.ambient-two { background: var(--pink); right: -10rem; bottom: -12rem; }
+
+.app-shell { position: relative; width: min(1240px, 100%); margin: 0 auto; padding: 52px 24px 64px; }
+.hero { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+.eyebrow { color: var(--cyan); font-size: .76rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 10px; }
+h1 { font-family: Orbitron, sans-serif; font-size: clamp(2.2rem, 6vw, 4.8rem); letter-spacing: .04em; line-height: 1.05; margin: 0; text-shadow: 0 0 22px rgba(120,246,255,.3); }
+.subtitle { color: var(--muted); font-size: 1.05rem; margin: 16px 0 0; max-width: 600px; }
+.live-indicator { border: 1px solid rgba(255,95,207,.55); border-radius: 999px; color: #ff9de4; font-family: Orbitron, sans-serif; font-size: .72rem; letter-spacing: .12em; padding: 10px 15px; white-space: nowrap; box-shadow: 0 0 18px rgba(255,95,207,.15); }
+.live-indicator span { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #ff5fcf; box-shadow: 0 0 10px #ff5fcf; }
+
+.toolbar { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; padding: 18px; margin-bottom: 28px; background: rgba(15,22,49,.55); border: 1px solid rgba(120,246,255,.12); border-radius: 16px; }
+.timezone-picker { display: grid; gap: 7px; color: var(--muted); font-size: .78rem; font-weight: 600; letter-spacing: .04em; }
+select, button { min-height: 43px; border-radius: 9px; font: inherit; }
+select { min-width: 245px; padding: 0 12px; color: #f8fbff; background: #111936; border: 1px solid var(--border); }
+button { cursor: pointer; padding: 0 17px; font-weight: 600; transition: transform .2s, box-shadow .2s; }
+button:hover { transform: translateY(-2px); }
+.add-button { color: #07121f; background: var(--cyan); border: 0; box-shadow: 0 0 18px rgba(120,246,255,.25); }
+.secondary-button { color: #d6ddf4; background: transparent; border: 1px solid rgba(148,163,199,.35); }
+
+.clocks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.clock-card { position: relative; overflow: hidden; padding: 23px; background: linear-gradient(145deg, rgba(22,31,68,.9), var(--panel)); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 12px 35px rgba(0,0,0,.28), inset 0 0 25px rgba(120,246,255,.025); }
+.clock-card::before { content: ""; position: absolute; width: 160px; height: 160px; right: -85px; top: -85px; border-radius: 50%; background: var(--pink); filter: blur(55px); opacity: .12; }
+.card-top { display: flex; justify-content: space-between; align-items: start; gap: 10px; position: relative; }
+.timezone-name { font-family: Orbitron, sans-serif; font-size: 1.2rem; color: var(--cyan); }
+.city-name { color: var(--muted); font-size: .82rem; margin-top: 5px; }
+.remove-button { border: 0; background: transparent; color: #7180a8; font-size: 1.25rem; min-height: auto; padding: 0 3px; }
+.clock-display { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; }
+.digital-time { color: #fff; font-family: Orbitron, sans-serif; font-size: clamp(1.65rem, 3.2vw, 2.25rem); letter-spacing: .06em; text-shadow: 0 0 15px rgba(120,246,255,.5); white-space: nowrap; }
+.ampm { color: var(--pink); font-size: .75rem; font-weight: 600; letter-spacing: .12em; margin-top: 7px; }
+.date { border-top: 1px solid rgba(148,163,199,.15); color: var(--muted); font-size: .82rem; margin-top: 20px; padding-top: 14px; }
+.analog-clock { flex: 0 0 78px; width: 78px; height: 78px; position: relative; border: 2px solid var(--cyan); border-radius: 50%; box-shadow: 0 0 14px rgba(120,246,255,.25); }
+.analog-clock::after { content: ""; position: absolute; width: 6px; height: 6px; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; background: var(--pink); z-index: 4; }
+.hand { position: absolute; left: 50%; bottom: 50%; width: 2px; border-radius: 2px; transform-origin: bottom; transform: translateX(-50%) rotate(0deg); background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+.hour-hand { height: 22px; width: 3px; } .minute-hand { height: 29px; } .second-hand { height: 33px; width: 1px; background: var(--pink); box-shadow: 0 0 6px var(--pink); }
+.empty-state { grid-column: 1 / -1; padding: 45px; text-align: center; color: var(--muted); border: 1px dashed var(--border); border-radius: 18px; }
+
+@media (max-width: 620px) { .app-shell { padding: 34px 16px 45px; } .hero { align-items: start; flex-direction: column; } .toolbar { align-items: stretch; } .timezone-picker, select, button { width: 100%; } .clock-display { gap: 10px; } }
